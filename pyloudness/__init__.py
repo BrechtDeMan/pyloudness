@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import subprocess
 import os
 
@@ -50,7 +53,7 @@ def set_loudness(file_location, loudness_in_dB=-23, ignore_clipping=False):
             return # skip, don't apply gain
     # apply gain
     command = ['ffmpeg', '-y', '-i', file_location,  '-af', 'volume='+str(linear_gain), output_file]
-    _ = subprocess.check_output(command, stderr=subprocess.STDOUT) # apply gain; don't print ffmpeg output
+    _ = subprocess.check_output(command, stderr=subprocess.STDOUT) # apply gain; don't print ffmpeg output
     
 def equal_loudness(folder_location, loudness_in_dB=-23, ignore_clipping=False):
     for file_name in os.listdir(folder_location):
